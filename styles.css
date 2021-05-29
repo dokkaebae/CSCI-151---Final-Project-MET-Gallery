@@ -1,0 +1,114 @@
+body{
+    display: block;
+    background-color: rgb(228,0,43);
+}
+#side-container {
+    float: left;
+    position:fixed;
+    overflow: hidden;
+    overflow-y: scroll;
+    width: 25vw;
+    min-height: 90vh;
+    background-color: rgb(228,0,43);
+
+    top:0;
+    left: 0;
+    bottom: 0;
+    margin-top: 0;
+    padding: 10px;
+    padding-bottom: 5vh;
+    border-radius: 3px;
+}
+/* Chrome, Safari, and Opera */
+#side-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* IE, Edge, and Firefox */
+#side-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#met-logo {
+    width: 10vw;
+    margin-left: 7vw;
+}
+
+#side-label {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2.5vw;
+    margin-bottom: 5vh;
+    margin-top: 3vh;
+    text-align: center;
+    text-transform: uppercase;
+    color: rgb(255, 245, 245);
+}
+
+.side-btn {
+    display: inline-block;
+    width:22.5vw;
+    height: 5vh;
+
+    padding-left: 1vw;
+    padding-right: 1vw;
+
+    font-size: 2vh;
+    font-family: sans-serif;
+    text-align: center;
+    line-height: 30px;
+    text-decoration: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    color:rgb(255, 245, 245);
+
+    /*border: 1px solid gray;*/
+}
+
+.side-btn:hover {
+    color: black;
+    background-color: rgb(255, 245, 245);
+}
+
+#main-container {
+    width: 73vw;
+    float: right;
+}
+
+#main-header {
+    background-color: rgb(228,0,43);
+    height: 12vh;
+    width: 74vw;
+    margin: 0;
+    top: 0;
+    right: 0;
+    position: sticky;
+}
+
+#main-gallery {
+    background-color: rosybrown;
+    width: 74vw;
+    min-height:100vh;
+    max-height: max-content;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+
+    padding-top: 10vh;
+    padding-bottom: 20vh;
+}
+#header-text {
+    color:rgb(255, 245, 245);
+    letter-spacing: 0.5em;
+    font-size: 5vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: uppercase;
+    margin-left: 5vw;
+}
+
+.card-img {
+    width:50vw;
+    margin-left: 30px;
+
+}
