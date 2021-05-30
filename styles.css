@@ -1,23 +1,24 @@
 body{
     display: block;
-    background-color: rgb(228,0,43);
+    background-color: rosybrown;
 }
 #side-container {
     float: left;
     position:fixed;
     overflow: hidden;
     overflow-y: scroll;
-    width: 25vw;
+    max-width: 25vw;
     min-height: 90vh;
+    justify-content: center;
+    align-self: center;
     background-color: rgb(228,0,43);
 
     top:0;
     left: 0;
     bottom: 0;
     margin-top: 0;
-    padding: 10px;
-    padding-bottom: 5vh;
-    border-radius: 3px;
+    padding-bottom: 10vh;
+    z-index: 1;
 }
 /* Chrome, Safari, and Opera */
 #side-container::-webkit-scrollbar {
@@ -31,32 +32,34 @@ body{
 }
 
 #met-logo {
-    width: 10vw;
-    margin-left: 7vw;
+    width: 20vw;
+    margin-left: 2.5vw;
+    margin-top: 7vh;
 }
 
 #side-label {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 2.5vw;
+    font-size: 1.5rem;
     margin-bottom: 5vh;
     margin-top: 3vh;
     text-align: center;
     text-transform: uppercase;
+    overflow-wrap: break-word;
     color: rgb(255, 245, 245);
 }
 
 .side-btn {
     display: inline-block;
     width:22.5vw;
-    height: 5vh;
+    height: 3rem;
 
-    padding-left: 1vw;
-    padding-right: 1vw;
+    padding-left: 1rem;
+    padding-right: 1rem;
 
     font-size: 2vh;
     font-family: sans-serif;
     text-align: center;
-    line-height: 30px;
+    line-height: 3rem;
     text-decoration: none;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -72,32 +75,26 @@ body{
 }
 
 #main-container {
-    width: 73vw;
-    float: right;
+    min-width: 75vw;
+    max-width: 80vw;
+    margin: 0;
+    margin-left: 25vw;
+    right: 0;
+    bottom: 0;
 }
 
 #main-header {
     background-color: rgb(228,0,43);
-    height: 12vh;
-    width: 74vw;
+    height: 10vh;
+    min-width: 75vw;
+    max-width: 80vw;
     margin: 0;
     top: 0;
     right: 0;
-    position: sticky;
+    z-index: 0;
+    position: fixed;
 }
 
-#main-gallery {
-    background-color: rosybrown;
-    width: 74vw;
-    min-height:100vh;
-    max-height: max-content;
-    bottom: 0;
-    right: 0;
-    margin: 0;
-
-    padding-top: 10vh;
-    padding-bottom: 20vh;
-}
 #header-text {
     color:rgb(255, 245, 245);
     letter-spacing: 0.5em;
@@ -107,8 +104,63 @@ body{
     margin-left: 5vw;
 }
 
-.card-img {
-    width:50vw;
-    margin-left: 30px;
+#main-gallery {
+    background-color: rosybrown;
+    min-width: 40vw;
+    min-height:100vh;
+    max-height: max-content;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    
 
+    margin-top: 10vh;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1.5fr));
+    grid-template-rows: repeat(auto-fit, minmax(500px, 2fr));
+    grid-gap: 1vw;
+    align-content: space-around;
+}
+
+
+.card {
+    background-color: rgb(255, 245, 245);
+    min-width: 25vw;
+    max-width: 50vw;
+    min-height: 70vh;
+    
+    padding: 1vw;
+    border-radius: 5px;
+}
+figure, figcaption {
+    margin: 0;
+    padding: 0;
+}
+.card-img {
+    justify-self: center;
+    max-width: 95%;
+    padding-left: 1vw;
+    border-radius: 3px;
+    text-align: justify;
+    font-family: 'Courier New', Courier, monospace;
+}
+.card-title {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+.card-medium, .card-artist, .card-bio {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    
+}
+.card-artist {
+    font-style: oblique;
 }

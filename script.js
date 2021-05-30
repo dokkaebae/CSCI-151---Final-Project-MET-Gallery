@@ -1,6 +1,5 @@
+alert("Select a department from the menu on the left to begin viewing a gallery.");
 let side_btn = document.querySelectorAll(".side-btn");
-
-
 
 //https://collectionapi.metmuseum.org/public/collection/v1/objects/[objectID]
 
@@ -63,12 +62,13 @@ function display_images(obj_ids){
         return response_arr;
     }).then(response_arr => {
         for(i = 0; i < 10; i++) {
-            console.log(response_arr);
-            card[i].childNodes[1].src = response_arr[i].primaryImage;
-            card[i].childNodes[3].textContent = response_arr[i].title;
-            card[i].childNodes[5].textContent = response_arr[i].medium;
-            card[i].childNodes[7].textContent = response_arr[i].artistDisplayName;
-            card[i].childNodes[9].textContent = response_arr[i].artistDisplayBio;
+            console.log(card[0].childNodes[1].childNodes[3]);
+            card[i].childNodes[1].childNodes[1].src = response_arr[i].primaryImage;
+            card[i].childNodes[1].childNodes[1].alt = "Image unavailable! Sorry for the inconvenience.";
+            card[i].childNodes[1].childNodes[3].childNodes[1].textContent = response_arr[i].title;
+            card[i].childNodes[1].childNodes[3].childNodes[3].textContent = response_arr[i].medium;
+            card[i].childNodes[1].childNodes[3].childNodes[5].textContent = response_arr[i].artistDisplayName;
+            card[i].childNodes[1].childNodes[3].childNodes[7].textContent = response_arr[i].artistDisplayBio;
         }
     }).catch(error => {
         console.log("error");
