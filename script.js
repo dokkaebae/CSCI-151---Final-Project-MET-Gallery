@@ -3,7 +3,6 @@ card.forEach(c => {
     c.style.display = "none";
 });
 
-alert("Select a department from the menu on the left to begin viewing a gallery.");
 let response_arr = [];
 let dept = 1;
 let side_btn = document.querySelectorAll(".side-btn");
@@ -12,8 +11,10 @@ let modal_img = document.querySelector("#img-modal");
 let modal_close = document.querySelector("#close-modal");
 let card_img = document.querySelectorAll(".card-img");
 let check = document.querySelector(".highlight");
+check.checked=false;
 let load = document.querySelector("#loading");
-
+let check_highlight = check.checked;
+let start = true;
 
 // retrieving images
 
@@ -30,7 +31,7 @@ function get_data(x, obj_ids) {
     ).then(json => {
         return json.json();
     }).then(j_response => {
-        if(j_response.isPublicDomain!=false && j_response.isHighlight==check.checked) {
+        if(j_response.isPublicDomain!=false) {
             console.log(j_response.objectID);
             return j_response;
         } else {
@@ -105,7 +106,7 @@ function display_images(count, obj_ids){
 
 function get_images(dept_id){
     console.log("searching in department...");
-    let ret = fetch("https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId="+dept_id+"&q=art").then(
+    let ret = fetch("https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId="+dept_id+"&isHighlight=" + check_highlight + "&hasImages=true&q=art").then(
         response => {
             if(!response.ok){
                 throw Error(response.statusText);
@@ -121,14 +122,42 @@ function get_images(dept_id){
     return ret;
 };
 
+function clear_cards() {
+    for(i = 0; i < 10; i++) {
+        card[i].childNodes[1].childNodes[1].src = "";
+        card[i].childNodes[1].childNodes[1].alt = "";
+        card[i].childNodes[1].childNodes[3].childNodes[1].textContent = "";
+        card[i].childNodes[1].childNodes[3].childNodes[3].textContent = "";
+        card[i].childNodes[1].childNodes[3].childNodes[5].textContent = "";
+        card[i].childNodes[1].childNodes[3].childNodes[7].textContent = "";
+    }
+}
+
+function highlight_button(dept) {
+    side_btn.forEach(btn => {
+        btn.style.backgroundColor = "";
+        btn.style.color = "";
+        if(btn.id == dept) {
+            btn.style.backgroundColor = "rgb(255, 245, 245)";
+            btn.style.color = "rgb(228,0,43)";
+        }
+    })
+}
+
 function get_department(){
     card.forEach(c => {
         c.style.display = "none";
     })
+    clear_cards();
     console.log("retrieving data...")
     response_arr = [];
-    dept = this.id;
+    if(start == false){
+        dept = this.id;
+    }
+    start = false;
+    highlight_button(dept);
     check.id = dept;
+    check_highlight = check.checked;
     load.textContent = "loading...";
     get_images(dept);
 };
@@ -154,6 +183,8 @@ modal_close.onclick = function() {
 //checkbox
 check.addEventListener("click", get_department);
 
+
+get_department();
 
 // childnodes: https://www.w3schools.com/jsref/prop_node_childnodes.asp
 // hide scrollbars: https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp

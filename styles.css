@@ -18,7 +18,7 @@ body{
     bottom: 0;
     margin-top: 0;
     padding-bottom: 10vh;
-    z-index: 0;
+    z-index: 1;
 }
 /* Chrome, Safari, and Opera */
 #side-container::-webkit-scrollbar {
@@ -70,8 +70,8 @@ body{
 }
 
 .side-btn:hover {
-    color: black;
     background-color: rgb(255, 245, 245);
+    color: black;
 }
 
 #main-container {
@@ -178,7 +178,7 @@ figure, figcaption {
 #modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 3;
     width: 100%;
     height: 100%;
     left:0;
