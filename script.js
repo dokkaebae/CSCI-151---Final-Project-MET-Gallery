@@ -1,25 +1,12 @@
 alert("Select a department from the menu on the left to begin viewing a gallery.");
+
 let side_btn = document.querySelectorAll(".side-btn");
+let modal = document.querySelector("#modal");
+let modal_img = document.querySelector("#img-modal");
+let modal_close = document.querySelector("#close-modal");
+let card_img = document.querySelectorAll(".card-img");
 
-//https://collectionapi.metmuseum.org/public/collection/v1/objects/[objectID]
-
-// async function get_data(x, obj_ids) {
-//     return fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects/" + obj_ids[x]).then(
-//         response => {
-//             if(!response.ok){
-//                 throw Error(response.statusText);
-//             }
-//             return response.json();
-//         }
-//     ).then(j_response => {
-//         if(j_response.isPublicDomain!=false){
-//             console.log(j_response);
-//             return j_response;
-//         }
-//     }).catch(error => {
-//         console.log(error);
-//     })
-// };
+// retrieving images
 
 function get_data(x, obj_ids) {
     let ret = fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects/" + obj_ids[x]).then(
@@ -55,14 +42,12 @@ function display_images(obj_ids){
         }
     }
     Promise.all(info_arr).then(responses => {
-        console.log(responses);
         for(let i = 0; i < 10; i++) {
             response_arr.push(responses[i]);
         }
         return response_arr;
     }).then(response_arr => {
         for(i = 0; i < 10; i++) {
-            console.log(card[0].childNodes[1].childNodes[3]);
             card[i].childNodes[1].childNodes[1].src = response_arr[i].primaryImage;
             card[i].childNodes[1].childNodes[1].alt = "Image unavailable! Sorry for the inconvenience.";
             card[i].childNodes[1].childNodes[3].childNodes[1].textContent = response_arr[i].title;
@@ -101,5 +86,20 @@ side_btn.forEach(function(btn) {
     btn.addEventListener("click", get_department);
 });
 
+// modal
+
+card_img.forEach(function(img) {
+    img.addEventListener("click", function(){
+        modal.style.display = "block";
+        modal_img.src = this.src;
+    });
+});
+
+modal_close.onclick = function() {
+    modal.style.display = "none";
+};
+
+
 // childnodes: https://www.w3schools.com/jsref/prop_node_childnodes.asp
 // hide scrollbars: https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp
+// modal: https://www.w3schools.com/howto/howto_css_modal_images.asp
