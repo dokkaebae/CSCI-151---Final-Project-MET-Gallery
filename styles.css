@@ -93,6 +93,9 @@ body{
     top: 0;
     right: 0;
     position: fixed;
+
+    display: flex;
+    flex-direction: row;
 }
 
 #header-text {
@@ -102,6 +105,13 @@ body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-transform: uppercase;
     margin-left: 5vw;
+}
+#highlight-check {
+    color: rgb(255, 245, 245);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    margin-top: 3vh;
+    margin-left: 30vw;
 }
 
 #main-gallery {
@@ -196,4 +206,17 @@ figure, figcaption {
 #close-modal:hover, #close-modal.focus {
     text-decoration: none;
     cursor: pointer;
+}
+
+#load-div {
+    z-index: 5;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    margin-right: 5vw;
+}
+
+#loading {
+    font-size: 1rem;
+    color: black;
 }

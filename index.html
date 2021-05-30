@@ -39,6 +39,10 @@
         <div id="main-container">
             <div id="main-header">
                 <h1 id="header-text">Gallery</h1>
+                <form id="highlight-check">
+                    <input type="checkbox" class="highlight" name="highlight">
+                    <label for="highlight">Show highlights</label>
+                </form>
             </div>
             <div id="main-gallery">
                 <div class="card">
@@ -152,6 +156,9 @@
                     </figure>  
                 </div>
             </div>
+        </div>
+        <div id="load-div">
+            <p id="loading"></p>
         </div>
         <script
             src="script.js" defer>
